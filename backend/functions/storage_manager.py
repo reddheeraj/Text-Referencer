@@ -15,6 +15,7 @@ def upload_and_process_book(file_name, book_in_text = None, book_path = None):
     list: List of sentences
     np.ndarray: Embedding matrix
     """
+    
     if book_in_text:
         book_text = book_in_text
     elif book_path:    
