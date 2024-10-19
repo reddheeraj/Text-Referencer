@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from backend.functions.pdf_utils import get_book_text
 from backend.functions.similarity_search import find_similar_sentences_cosine
 from backend.functions.storage_manager import upload_and_process_book
 
@@ -19,7 +20,7 @@ def upload_book():
 
     file = request.files["file"]
     file_name = file.filename
-    book_text = file.read().decode("utf-8")
+    book_text = get_book_text(file)
 
     global sentence_list, embedding_matrix
 

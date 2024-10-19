@@ -1,6 +1,6 @@
 from groq import Groq
 
-client = Groq(api_key="<Enter Groq API Key>")
+client = Groq(api_key="")
 
 
 def get_groq_summary(similar_sentences, highlight, title):
@@ -14,10 +14,10 @@ def get_groq_summary(similar_sentences, highlight, title):
                 "role": "system",
                 "content": f"""
 Act as an E-Reader assistant. I will give you a text from a book {title} that I am reading. I would
-also provide you with similar sentences from the book as a list of strings. You neex to use the context of those
-sentences and provide me more insight into the highlited text. The output should have the insight directly.
+also provide you with similar sentences from the book as a list of strings. You need to use those
+sentences and provide me more context into the highlited text. The output should have the context directly.
 
-Give insight directly, don't mention about the highlighted text or the similar sentences. Just give me the insight.
+Give insight directly, don't mention about the highlighted text or the similar sentences. Just give me the context.
             """,
             },
             {
