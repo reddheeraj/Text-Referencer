@@ -2,3 +2,5 @@
 *.ipynb
 node_modules
 *.conda
+text_ref/
+data/

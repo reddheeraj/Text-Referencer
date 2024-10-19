@@ -1,10 +1,14 @@
 from sklearn.metrics.pairwise import cosine_similarity
+
+from backend.functions.groq_utils import get_groq_summary
 from .embedding_utils import generate_embedding_batch
 import numpy as np
 from .embedding_utils import load_model
 
 
-def find_similar_sentences_cosine(query_text, sentence_list, embedding_matrix, k=5):
+def find_similar_sentences_cosine(
+    query_text, title, sentence_list, embedding_matrix, k=5
+):
     """
     Find the top k most similar sentences to a query sentence using cosine similarity
 
@@ -20,13 +24,15 @@ def find_similar_sentences_cosine(query_text, sentence_list, embedding_matrix, k
     """
     model = load_model()
     query_embedding = generate_embedding_batch([query_text], model)
-    
+
     query_embedding = normalize_embeddings(query_embedding)
     embedding_matrix = normalize_embeddings(embedding_matrix)
     similarities = cosine_similarity(query_embedding, embedding_matrix)
     top_k_indices = np.argsort(similarities[0])[-k:][::-1]
-    
-    return [sentence_list[i] for i in top_k_indices]
+    similar_sentences = [sentence_list[i] for i in top_k_indices]
+
+    return get_groq_summary(similar_sentences, query_text, title)
+
 
 # Function to normalize embeddings
 def normalize_embeddings(embeddings):
