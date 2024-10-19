@@ -7,7 +7,7 @@ from .embedding_utils import load_model
 
 
 def find_similar_sentences_cosine(
-    query_text, title, sentence_list, embedding_matrix, k=5
+    query_text, title, sentence_list, embedding_matrix, k=10
 ):
     """
     Find the top k most similar sentences to a query sentence using cosine similarity
@@ -30,6 +30,7 @@ def find_similar_sentences_cosine(
     similarities = cosine_similarity(query_embedding, embedding_matrix)
     top_k_indices = np.argsort(similarities[0])[-k:][::-1]
     similar_sentences = [sentence_list[i] for i in top_k_indices]
+    print("Similar Sentences:", similar_sentences)
 
     return get_groq_summary(similar_sentences, query_text, title)
 
