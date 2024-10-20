@@ -2,9 +2,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from backend.functions.bedrock_utils import get_bedrock_summary
 from backend.functions.groq_utils import get_groq_summary
+from backend.functions.text_processing import get_context
 from .embedding_utils import generate_embedding_batch
 import numpy as np
 from .embedding_utils import load_model
+
+context = get_context()
 
 
 def find_similar_sentences_cosine(
@@ -33,7 +36,7 @@ def find_similar_sentences_cosine(
     similar_sentences = [sentence_list[i] for i in top_k_indices]
     print("Similar Sentences:", similar_sentences)
 
-    return get_bedrock_summary(similar_sentences, query_text, title)
+    return get_bedrock_summary(similar_sentences, query_text, title, context)
 
 
 # Function to normalize embeddings

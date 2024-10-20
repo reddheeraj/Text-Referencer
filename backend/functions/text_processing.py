@@ -80,38 +80,38 @@ def process_chunk(chunk):
         {
             "role": "system",
             "content": """
-            you are a helpful E-reader book assistant. You help people understand the content of the book.
-            You are being given a text file which is a book. You will extract the entities from given text.
-            You will extract only the entities and about that entity. An Entity is a person, place, or thing.
+you are a helpful E-reader book assistant. You help people understand the content of the book.
+You are being given a text file which is a book. You will extract the entities from given text.
+You will extract only the entities and about that entity. An Entity is a person, place, or thing.
             """,
         },
         {
             "role": "user",
             "content": f"""
-            You are being given a text file which is a book. Extract the people from given text.
-            I want you to extract only the entity and about that entity. An Entity is a person, place, or thing.
-            Please follow the below example. I want the output to be exactly followed. Do not include any other information. Just give
-            the output as formatted below in the example. only give the list. do not give anything else before or after, just the list.
+You are being given a text file which is a book.
+I want you to extract only the entity and about that entity. An Entity is a person, place, or thing.
+Please follow the below example. I want the output to be exactly followed. Do not include any other information. Just give
+the output as formatted below in the example. only give the list. do not give anything else before or after, just the list.
 
-            Example:
-            Input: some text
-            Output: 
-                [
-                    {{
-                        'Entity': 'Jinchul Woo',
-                        'About': 'He was an A-rank hunter so powerful that, had his magic power evaluation been slightly higher, he would’ve been the second S-rank hunter to join the association after President Go. He had four years of practical experience under his belt and was a top-tier A-rank hunter.'
-                    }},
-                    {{
-                        'Entity: 'President Go',
-                        'About': 'He was the President of the Korean Hunter Association. He had highly valued Jinchul, who had elected to work for the association despite being courted by large guilds.'
-                    }},
-                    {{
-                        'Entity': 'Kasaka's Fang',
-                        'About': 'A dagger made out of the Snake Kasaka's tooth fangs.'
-                    }}
-                ]
+Example:
+Input: some text
+Output: 
+    [
+        {{
+            'Entity': 'Jinchul Woo',
+            'About': 'He was an A-rank hunter so powerful that, had his magic power evaluation been slightly higher, he would’ve been the second S-rank hunter to join the association after President Go. He had four years of practical experience under his belt and was a top-tier A-rank hunter.'
+        }},
+        {{
+            'Entity: 'President Go',
+            'About': 'He was the President of the Korean Hunter Association. He had highly valued Jinchul, who had elected to work for the association despite being courted by large guilds.'
+        }},
+        {{
+            'Entity': 'Kasaka's Fang',
+            'About': 'A dagger made out of the Snake Kasaka's tooth fangs.'
+        }}
+    ]
 
-            This is the book: {chunk}
+This is the book: {chunk}
             """,
         }
     ],

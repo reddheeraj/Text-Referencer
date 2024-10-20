@@ -4,7 +4,7 @@ import json
 bedrock = boto3.client(service_name="bedrock-runtime", region_name="us-west-2")
 
 
-def get_bedrock_summary(similar_sentences, highlight, title):
+def get_bedrock_summary(similar_sentences, highlight, title, context):
     # Create the Bedrock client
 
     # Prepare the input for the model
@@ -21,6 +21,7 @@ sentences and provide me more context into the highlited text. The output should
 
 Highlighted Text: {highlight}
 Similar Sentences: {similar_sentences}
+Entity Context: {context}
 
 Give insight directly, don't mention about the highlighted text or the similar sentences. Just give me the context.
             """,

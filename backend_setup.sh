@@ -3,6 +3,6 @@ python -m venv text_ref
 
 source ./text_ref/bin/activate
 
-pip install -r requirements.txt
+pip install -r ./backend/requirements.txt
 
 flask run
